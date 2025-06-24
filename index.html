@@ -234,6 +234,7 @@
         </div>
         <button class="reset-btn" id="reset">รีเซ็ต</button>
     </div>
+    <audio id="pop-sound" src="imgs/pop.mp3" preload="auto"></audio>
     <script>
         // PopCat Game Script
         function setCookie(name, value, days) {
@@ -259,6 +260,7 @@
         const popcat = document.getElementById('popcat');
         const countDisplay = document.getElementById('count');
         const resetBtn = document.getElementById('reset');
+        const popSound = document.getElementById('pop-sound');
         countDisplay.textContent = count;
         function handlePop() {
             count++;
@@ -266,6 +268,8 @@
             setCookie('popcat_count', count, 365);
             popcat.src = "imgs/655_20250622210934.png";
             popcat.style.transform = 'scale(0.95) rotate(5deg)';
+            popSound.currentTime = 0;
+            popSound.play();
             setTimeout(() => {
                 popcat.src = "imgs/654_20250622204144.png";
                 popcat.style.transform = 'scale(1) rotate(0)';
