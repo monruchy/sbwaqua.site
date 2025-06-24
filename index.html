@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBW.AQUA</title>
+    <style>
+        :root {
+            --main: #00bcd4;
+            --main-dark: #0097a7;
+            --bg: #f7fafd;
+            --text: #004d40;
+            --card: #fff;
+            --shadow: 0 4px 24px rgba(0,188,212,0.10);
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 32px 16px 120px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 12px rgba(0,188,212,0.10);
+        }
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
+            color: var(--main-dark);
+        }
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--text);
+            opacity: 0.7;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            padding: 13px 18px;
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .link-card:hover {
+            box-shadow: 0 8px 24px rgba(0,188,212,0.18);
+            transform: translateY(-2px) scale(1.02);
+        }
+        .platform-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,188,212,0.08);
+        }
+        .platform-info h2 {
+            font-size: 1.08rem;
+            font-weight: 600;
+            margin: 0 0 2px 0;
+            color: var(--main-dark);
+        }
+        .platform-info p {
+            font-size: 0.96rem;
+            margin: 0;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        /* Popcat Game */
+        .popcat-game {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 18px 18px 0 0;
+            box-shadow: 0 -2px 24px rgba(0,188,212,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 18px 0 12px 0;
+            z-index: 10;
+        }
+        .popcat-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        .popcat {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #fff 70%, #e0f7fa 100%);
+            box-shadow: 0 2px 8px rgba(0,188,212,0.10);
+            border: 2px solid #b2ebf2;
+            cursor: pointer;
+            transition: transform 0.15s;
+            user-select: none;
+        }
+        .popcat:active {
+            transform: scale(0.93) rotate(3deg);
+        }
+        .counter {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--main-dark);
+            background: #e0f7fa;
+            border-radius: 8px;
+            padding: 6px 16px;
+            border: 1px solid #b2ebf2;
+            letter-spacing: 1px;
+        }
+        .reset-btn {
+            margin-top: 6px;
+            padding: 5px 18px;
+            background: linear-gradient(to right, #00acc1, #4dd0e1);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,188,212,0.10);
+        }
+        .reset-btn:hover {
+            background: linear-gradient(to right, #0097a7, #26c6da);
+            transform: scale(1.04);
+        }
+        @media (max-width: 600px) {
+            .container {
+                max-width: 98vw;
+                padding: 18px 4vw 110px 4vw;
+            }
+            .popcat-game {
+                max-width: 100vw;
+                border-radius: 12px 12px 0 0;
+                padding: 12px 0 8px 0;
+            }
+            .popcat {
+                width: 44px;
+                height: 44px;
+            }
+            .counter {
+                font-size: 1.05rem;
+                padding: 4px 10px;
+            }
+            .reset-btn {
+                font-size: 0.92rem;
+                padding: 3px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://www.instagram.com/sbw.aqua" target="_blank">
+            <img src="imgs/S__5227039.jpg" alt="SBW.AQUA Logo" class="logo">
+        </a>
+        <h1>SBW.AQUA</h1>
+        <div class="subtitle">🛥️ “Aqua-World” everything can be 🎐🌎</div>
+        <div class="links">
+            <a href="https://www.instagram.com/sbw.aqua" target="_blank" class="link-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram Logo" class="platform-logo">
+                <div class="platform-info">
+                    <h2>Instagram</h2>
+                    <p>ติดตามพวกเราบน Instagram</p>
+                </div>
+            </a>
+            <a href="https://www.tiktok.com/@sbw.aqua" target="_blank" class="link-card">
+                <img src="imgs/tiktok-logo.png" alt="TikTok Logo" class="platform-logo">
+                <div class="platform-info">
+                    <h2>TikTok</h2>
+                    <p>ติดตามพวกเราบน TikTok</p>
+                </div>
+            </a>
+            <a href="https://line.me/R/ti/p/@685gtiqk" target="_blank" class="link-card">
+                <img src="imgs/LINE_logo.svg.png" alt="LINE Logo" class="platform-logo">
+                <div class="platform-info">
+                    <h2>LINE</h2>
+                    <p>เพิ่มเพื่อนทาง LINE</p>
+                </div>
+            </a>
+            <a href="https://youtube.com/@sbw-aqua" target="_blank" class="link-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube Logo" class="platform-logo">
+                <div class="platform-info">
+                    <h2>YouTube</h2>
+                    <p>ติดตามช่อง YouTube ของพวกเรา</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="popcat-game">
+        <div class="popcat-container">
+            <img src="imgs/654_20250622204144.png" alt="PopCat" class="popcat" id="popcat">
+            <div class="counter">POPAQUA: <span id="count">0</span></div>
+        </div>
+        <button class="reset-btn" id="reset">รีเซ็ต</button>
+    </div>
+    <script>
+        // PopCat Game Script
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i=0;i < ca.length;i++) {
+                let c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+        let count = parseInt(getCookie('popcat_count')) || 0;
+        const popcat = document.getElementById('popcat');
+        const countDisplay = document.getElementById('count');
+        const resetBtn = document.getElementById('reset');
+        countDisplay.textContent = count;
+        function handlePop() {
+            count++;
+            countDisplay.textContent = count;
+            setCookie('popcat_count', count, 365);
+            popcat.src = "imgs/655_20250622210934.png";
+            popcat.style.transform = 'scale(0.95) rotate(5deg)';
+            setTimeout(() => {
+                popcat.src = "imgs/654_20250622204144.png";
+                popcat.style.transform = 'scale(1) rotate(0)';
+            }, 100);
+        }
+        popcat.addEventListener('click', handlePop);
+        popcat.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            handlePop();
+        });
+        resetBtn.addEventListener('click', function() {
+            count = 0;
+            countDisplay.textContent = count;
+            setCookie('popcat_count', count, 365);
+            popcat.src = "imgs/654_20250622204144.png";
+        });
+    </script>
+</body>
+</html>
