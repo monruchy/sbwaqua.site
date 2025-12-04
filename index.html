@@ -164,6 +164,69 @@
             background: linear-gradient(to right, #0097a7, #26c6da);
             transform: scale(1.04);
         }
+        /* Advertisement Banner */
+        .ad-banner {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            max-width: 420px;
+            background: white;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideDown 0.4s ease-out;
+        }
+        .ad-banner.hidden {
+            display: none;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateX(-50%) translateY(-100%);
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        .ad-close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 44px;
+            height: 44px;
+            background: #00bcd4;
+            border: none;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.1s;
+            z-index: 1000;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .ad-close-btn:hover {
+            background: #0097a7;
+            transform: scale(1.1);
+        }
+        .ad-close-btn:active {
+            transform: scale(0.95);
+        }
+        .ad-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        body.ad-banner-open {
+            padding-top: 0;
+        }
         @media (max-width: 600px) {
             .container {
                 max-width: 98vw;
@@ -190,6 +253,12 @@
     </style>
 </head>
 <body>
+    <!-- Advertisement Banner -->
+    <div class="ad-banner" id="adBanner">
+        <button class="ad-close-btn" id="adCloseBtn">✕</button>
+        <img src="imgs/591409674_25281610778134384_1129031988888325520_n.jpg" alt="Advertisement" class="ad-image">
+    </div>
+
     <div class="container">
         <a href="https://www.instagram.com/sbw.aqua" target="_blank">
             <img src="imgs/S__5227039.jpg" alt="SBW.AQUA Logo" class="logo">
@@ -236,6 +305,30 @@
     </div>
     <audio id="pop-sound" src="imgs/pop.mp3" preload="auto"></audio>
     <script>
+        // Advertisement Banner Script
+        const adBanner = document.getElementById('adBanner');
+        const adCloseBtn = document.getElementById('adCloseBtn');
+        
+        function closeAdBanner() {
+            adBanner.classList.add('hidden');
+        }
+        
+        // Show banner and auto-close after 5 seconds
+        window.addEventListener('load', function() {
+            adBanner.classList.remove('hidden');
+            
+            // Auto-close after 5 seconds
+            setTimeout(function() {
+                closeAdBanner();
+            }, 5000);
+        });
+        
+        // Close on button click
+        adCloseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            closeAdBanner();
+        });
+
         // PopCat Game Script
         function setCookie(name, value, days) {
             let expires = "";
